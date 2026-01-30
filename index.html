@@ -83,12 +83,13 @@
     style="max-width: 480px; margin: 0 auto 40px;"
 >
 
-    <!-- Zwei kleine Boxen für Vor- und Nachname -->
+    <!-- Zwei kleine Boxen -->
     <div style="display: flex; gap: 12px; margin-bottom: 20px;">
         <div style="flex: 1;">
             <input
                 type="text"
-                name="FIRSTNAME"
+                name="VORNAME"
+                id="VORNAME"
                 placeholder="Vorname"
                 required
                 style="width: 100%; padding: 16px; border: 0; border-radius: 50px; background: var(--according-bg); color: var(--text-primary); font-size: 1.1rem; box-shadow: 0 8px 32px rgba(0,0,0,0.2);"
@@ -98,7 +99,8 @@
         <div style="flex: 1;">
             <input
                 type="text"
-                name="LASTNAME"
+                name="NACHNAME"
+                id="NACHNAME"
                 placeholder="Nachname (optional)"
                 style="width: 100%; padding: 16px; border: 0; border-radius: 50px; background: var(--according-bg); color: var(--text-primary); font-size: 1.1rem; box-shadow: 0 8px 32px rgba(0,0,0,0.2);"
             >
@@ -109,21 +111,33 @@
     <input
         type="email"
         name="EMAIL"
+        id="email"
         placeholder="beispiel@email.com"
         required
         style="width: 100%; padding: 16px; margin-bottom: 16px; border: 0; border-radius: 50px; background: var(--according-bg); color: var(--text-primary); font-size: 1.1rem; box-shadow: 0 8px 32px rgba(0,0,0,0.2);"
     >
+
+    <!-- Newsletter Zustimmung -->
+    <div style="margin: 16px 0; display: flex; align-items: center; gap: 12px;">
+        <input type="checkbox" required>
+        <label>
+            Ja, schickt mir Updates & <strong>Early Access</strong> Infos (Newsletter)
+        </label>
+    </div>
 
     <!-- Unsichtbare Pflichtfelder für Brevo -->
     <input type="text" name="email_address_check" value="" hidden>
     <input type="hidden" name="locale" value="de">
     <input type="hidden" name="html_type" value="simple">
 
-    <!-- Submit Button -->
-    <button type="submit" class="btn primary full" style="margin-top: 16px;">
+    <button type="submit" class="btn primary full">
         Kostenlos vormerken
     </button>
 </form>
+
+
+
+
 
                             <!-- NUR EIN EINZIGES Meldungs-Element – sauber ohne überflüssige Styles -->
                             <p id="form-message" style="text-align: center; margin-top: 40px; min-height: 0;"></p>
