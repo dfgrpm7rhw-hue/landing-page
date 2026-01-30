@@ -30,10 +30,11 @@ exports.handler = async function (event) {
       body: JSON.stringify({
         email,
         listIds: [Number(listId)],
-        attributes: {
-          FIRSTNAME: vorname,
-          LASTNAME: nachname,
-        },
+     attributes: {
+  VORNAME: vorname,
+  NACHNAME: nachname,
+},
+
         updateEnabled: true,
       }),
     });
