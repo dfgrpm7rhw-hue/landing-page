@@ -1,0 +1,505 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+:root {
+    /* Dark Mode */
+    --bg-primary: #0d0015;
+    --bg-hero: linear-gradient(rgba(0, 0, 0, 0.65), rgba(0, 0, 0, 0.75));
+    --text-primary: #ffffff;
+    --accent: #ff69b4;
+    --accent-hover: #e91e63;
+    --surface: rgba(255, 255, 255, 0.05);
+    --border: #555;
+    --card-bg: rgba(20, 0, 30, 0.7);
+    --according-bg: rgb(21, 24, 27);
+    --html-bg: #000000;
+}
+
+:root[color-mode="light"] {
+    --bg-primary: #fff5f9;
+    --bg-hero: linear-gradient(rgba(255, 245, 250, 0.85), rgba(255, 230, 240, 0.9));
+    --text-primary: #2d001f;
+    --accent: #e91e63;
+    --accent-hover: #c2185b;
+    --surface: rgba(0, 0, 0, 0.03);
+    --border: #e0c0d0;
+    --card-bg: #ffffff;
+    --according-bg: rgb(255, 255, 255);
+    --html-bg: #ffffff;
+}
+
+
+
+html {
+    background: var(--html-bg);
+}
+
+.bc {
+    background-color: var(--bg-primary);
+    transition: background 0.5s ease;
+}
+
+body {
+    font-family: 'Poppins', sans-serif;
+    background: var(--html-bg);
+    color: var(--text-primary);
+    min-height: 100vh;
+    position: relative;
+    transition: background 0.5s ease, color 0.5s ease;
+}
+
+.navbar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px 5%;
+    background: rgba(0, 0, 0, 0.4);
+    backdrop-filter: blur(10px);
+    z-index: 100;
+    transition: background 0.5s, backdrop-filter 0.5s;
+}
+
+:root[color-mode="light"] .navbar {
+    background: rgba(255, 255, 255, 0.7);
+    backdrop-filter: blur(12px);
+}
+
+/* Logo bleibt an gleicher Position und Größe */
+.logo {
+    font-family: 'Playfair Display', serif;
+    font-size: 2.2rem;
+    font-weight: bold;
+    color: var(--accent); /* Fallback-Farbe, falls Bild nicht lädt */
+    display: flex;
+    align-items: center;
+    height: 2.2rem; /* exakt gleiche Höhe wie vorher */
+}
+
+/* Das Bild selbst */
+.logo-img {
+    height: 1000%;          /* passt exakt in die 2.2rem Höhe */
+    width: auto;           /* behält Proportionen */
+    max-height: 10rem;  
+    margin-top: 10px; 
+    margin-left: -30px; /* Sicherheit */
+}
+
+/* Light-Modus: helles Logo */
+:root[color-mode="light"] .logo-img {
+    content: url("Logo-light.png");
+    margin-top: 18px;
+}
+
+/* Dark-Modus: dunkles Logo */
+:root[color-mode="dark"] .logo-img {
+    content: url("Logo-dark.png");
+}
+
+
+nav a {
+    color: var(--text-primary);
+    text-decoration: none;
+    margin-left: 30px;
+    font-weight: 500;
+    transition: color 0.3s;
+}
+
+nav a:hover {
+    color: var(--accent);
+}
+
+/* Theme Toggle Container */
+.theme-toggle-wrapper {
+    display: flex;
+    align-items: center;
+}
+
+/* Neuer Toggle-Style mit Icons */
+.theme-toggle {
+    position: relative;
+    display: inline-block;
+    width: 68px;
+    /* etwas breiter für Icons */
+    height: 36px;
+    cursor: pointer;
+}
+
+.theme-toggle input {
+    opacity: 0;
+    width: 0;
+    height: 0;
+}
+
+.toggle-track {
+    position: absolute;
+    inset: 0;
+    background-color: #bbb;
+    border-radius: 36px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 8px;
+    transition: background-color 0.4s ease;
+    overflow: hidden;
+}
+
+.toggle-icon {
+    font-size: 20px;
+    line-height: 1;
+    transition: opacity 0.4s ease, transform 0.4s ease;
+    z-index: 2;
+}
+
+/* Hellblau/Lila für Mond */
+
+.toggle-knob {
+    position: absolute;
+    width: 28px;
+    height: 28px;
+    border-radius: 50%;
+    left: 4px;
+    transition: transform 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55), background 0.4s ease;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.25);
+    z-index: 1;
+}
+
+/* Light Mode: klassisch weiß */
+:root[color-mode="light"] .toggle-knob {
+    background: white !important;
+}
+
+/* Dark Mode: schwarzer Knob mit sanftem Farbverlauf */
+:root[color-mode="dark"] .toggle-knob {
+    background: linear-gradient(145deg, #0a0a0a0a, #000000) !important;
+    box-shadow: 0 2px 12px rgba(0, 0, 0, 0.7) !important;
+}
+
+/* Dark Mode aktiv (Checkbox checked) */
+input:checked+.toggle-track {
+    background: var(--accent);
+    /* pink im Dark-Modus */
+}
+
+input:checked+.toggle-track .sun {
+    opacity: 0;
+    transform: translateX(20px);
+}
+
+input:checked+.toggle-track .moon {
+    opacity: 1;
+    transform: translateX(2px);
+}
+
+input:checked+.toggle-track .toggle-knob {
+    transform: translateX(32px);
+}
+
+/* Light Mode (unchecked) */
+input:not(:checked)+.toggle-track .moon {
+    opacity: 0;
+    transform: translateX(-20px);
+}
+
+input:not(:checked)+.toggle-track .sun {
+    opacity: 1;
+    transform: translateX(-2px);
+}
+
+/* Light-Modus Anpassung (heller Track) */
+:root[color-mode="light"] .toggle-track {
+    background: #ddd;
+}
+
+:root[color-mode="light"] input:checked+.toggle-track {
+    background: var(--accent);
+    /* bleibt pink, aber könnte auch #d63384 sein */
+}
+
+/* Hover-Effekt */
+.theme-toggle:hover .toggle-track {
+    box-shadow: 0 0 0 3px rgba(var(--accent), 0.2);
+}
+
+.hero {
+    height: 100%;
+    min-height: 700px;
+    background: var(--bg-hero), url('https://images.unsplash.com/photo-1519741497674-8b694a7799df?auto=format&fit=crop&q=80') center/cover no-repeat;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    transition: background 0.5s ease;
+}
+
+.hero-content {
+    max-width: 900px;
+    padding: 0 20px;
+}
+
+.pre-title {
+    color: var(--accent);
+    font-size: 1.3rem;
+    letter-spacing: 4px;
+    text-transform: uppercase;
+    margin-bottom: 10px;
+    margin-top: 60px;
+}
+
+h1 {
+    font-family: 'Playfair Display', serif;
+    font-size: 4.8rem;
+    line-height: 1.1;
+    margin-bottom: 20px;
+}
+
+.highlight {
+    color: var(--accent);
+}
+
+.subtitle {
+    font-size: 1.3rem;
+    line-height: 1.6;
+    margin-bottom: 40px;
+    opacity: 0.9;
+}
+
+.cta-buttons {
+    display: flex;
+    gap: 20px;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.btn {
+    padding: 14px 32px;
+    font-size: 1.1rem;
+    border-radius: 50px;
+    cursor: pointer;
+    transition: all 0.3s;
+}
+
+.btn.primary {
+    background: var(--accent);
+    color: white;
+    border: none;
+    text-decoration: none;
+}
+
+.btn.primary:hover {
+    background: var(--accent-hover);
+    transform: translateY(-3px);
+    text-decoration: none;
+}
+
+.btn.outline {
+    background: transparent;
+    border: 2px solid var(--accent);
+    color: var(--accent);
+}
+
+.btn.outline:hover {
+    background: var(--accent);
+    color: white;
+}
+
+.btn.full {
+    width: 100%;
+    max-width: 380px;
+}
+
+.signup-section {
+    padding: 20px 5%;
+    text-align: center;
+    background: var(--card-bg);
+    transition: background 0.5s;
+}
+
+.signup-section h2 {
+    font-family: 'Playfair Display', serif;
+    font-size: 2.8rem;
+    margin-bottom: 40px;
+    color: var(--accent);
+}
+
+input[type="email"] {
+    width: 100%;
+    padding: 16px;
+    margin-bottom: 20px;
+    margin-top: 5px;
+    border: 0px solid var(--border);
+    border-radius: 50px;
+    background: var(--according-bg);
+    color: var(--text-primary);
+    font-size: 1.1rem;
+    box-shadow: 0 8px 32px rgba(0,0,0,0.2);
+}
+
+input[type="email"]::placeholder {
+    color: #aaa;
+}
+
+.checkbox-label {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 30px;
+    font-size: 0.95rem;
+    opacity: 0.9;
+}
+
+.faq-section {
+    padding: 150px 5%;
+    background: var(--card-bg);
+    transition: background 0.5s;
+    margin-bottom: -300px;
+}
+
+.faq-section h2 {
+    text-align: center;
+    font-family: 'Playfair Display', serif;
+    font-size: 2.8rem;
+    color: var(--accent);
+    margin-bottom: 50px;
+}
+
+.accordion details {
+    background: var(--according-bg);
+    margin-bottom: 16px;
+    border-radius: 12px;
+    overflow: hidden;
+    border: 0px solid var(--border);
+    box-shadow: 0 8px 32px rgba(0,0,0,0.2);
+}
+
+.accordion summary {
+    padding: 20px 30px;
+    font-weight: 600;
+    cursor: pointer;
+    background: rgba(var(--accent), 0.1);
+    list-style: none;
+}
+
+.accordion summary:hover {
+    background: rgba(var(--accent), 0.2);
+}
+
+.accordion p {
+    padding: 0 30px 25px;
+    line-height: 1.7;
+}
+
+
+
+/* Responsive */
+@media (max-width: 768px) {
+    h1 {
+        font-size: 3.5rem;
+    }
+
+    .subtitle {
+        font-size: 1.1rem;
+    }
+
+    .navbar {
+        padding: 15px 5%;
+        flex-wrap: wrap;
+        gap: 15px;
+    }
+
+    nav {
+        order: 3;
+        width: 100%;
+        text-align: center;
+    }
+
+    nav a {
+        margin: 0 12px;
+        font-size: 0.95rem;
+    }
+
+    .cta-buttons {
+        flex-direction: column;
+    }
+}
+
+.about-hero {
+    min-height: auto;
+    padding: 80px 5%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.about-hero h1 {
+    font-family: 'Playfair Display', serif;
+    font-weight: 700;
+    margin-bottom: 32px;
+}
+
+.about-hero p {
+    opacity: 0.92;
+}
+
+.about-hero .grid-item {
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.about-hero .grid-item:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 16px 48px rgba(0, 0, 0, 0.25);
+}
+
+
+/* Inhalt startet direkt unter Header – kein weißer Spalt */
+main {
+    padding-top: 100px !important;
+    /* Header-Höhe + Puffer – passe bei Bedarf an */
+}
+
+/* Sicherstellen: Keine unerwünschten Hintergründe */
+.signup-section,
+.about-hero,
+section,
+.hero {
+    background: transparent !important;
+}
+
+footer {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    padding: 20px 0;
+    text-align: center;
+    font-size: 0.9rem;
+
+    background: rgba(0, 0, 0, 0.4);
+    /* WICHTIG */
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(10px);
+    transition: background 0.5s, backdrop-filter 0.5s;
+    z-index: 90;
+}
+
+:root[color-mode="light"] footer {
+    background: rgba(255, 255, 255, 0.7);
+    backdrop-filter: blur(12px);
+}
+
+
+/* Body mehr Padding unten, damit Inhalt nicht unter Footer verschwindet */
+body {
+    padding-bottom: 40px;
+    /* Höhe des Footers + Puffer */
+}
+
+nav a.active {
+    color: var(--accent);
+}

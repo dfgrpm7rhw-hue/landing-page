@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="de" color-mode="light">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dateo – Dating neu gedacht</title>
+    <link rel="stylesheet" href="styles.css">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Poppins:wght@400;600&display=swap"
+        rel="stylesheet">
+    <script src="script.js"></script>
+    <!-- Theme-Sync für alle Seiten (Dark/Light bleibt gleich) -->
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const html = document.documentElement;
+            const toggle = document.getElementById('theme-toggle-checkbox');
+
+            if (!toggle) return;
+
+            // Aktuellen Zustand aus localStorage laden (Fallback: light)
+            const savedMode = localStorage.getItem('color-mode') || 'light';
+            html.setAttribute('color-mode', savedMode);
+            toggle.checked = (savedMode === 'dark');
+
+            // Bei Änderung speichern & syncen
+            toggle.addEventListener('change', () => {
+                const newMode = toggle.checked ? 'dark' : 'light';
+                html.setAttribute('color-mode', newMode);
+                localStorage.setItem('color-mode', newMode);
+            });
+        });
+    </script>
+</head>
+
+<body>
+    <div class="bc">
+        <header class="navbar">
+            <div class="logo">
+                <img src="Logo-light.png" alt="Dateo Logo" class="logo-img">
+            </div>
+            <nav>
+                <a href="index.html">Home</a>
+                <a href="about.html">Über uns</a> <!-- Jetzt externe Seite -->
+                <a href="fraq.html">Fragen</a>
+                <a href="index.html#join">Mitmachen</a>
+            </nav>
+            <!-- Theme Toggle mit Icons -->
+            <div class="theme-toggle-wrapper">
+                <label class="theme-toggle" aria-label="Dark/Light Mode wechseln">
+                    <input type="checkbox" id="theme-toggle-checkbox" />
+                    <span class="toggle-track">
+                        <span class="toggle-icon sun">☀️</span>
+                        <span class="toggle-icon moon">🌙</span>
+                        <span class="toggle-knob"></span>
+                    </span>
+                </label>
+            </div>
+        </header>
+        <main>
+            <section class="hero" id="home">
+                <div class="hero-content">
+                    <p class="pre-title">DATING PLATFORM</p>
+                    <h1>Wir sind die neue Art zu <span class="highlight">daten</span></h1>
+                    <p class="subtitle">
+                        Bald live: Echtere Matches, bessere Gespräche, weniger Swipen.<br>
+                        Sichere dir jetzt deinen Platz und sei unter den Ersten dabei.
+                    </p>
+
+                    <div class="cta-buttons">
+                        <button type="button" class="btn primary" onclick="window.location.href='more.html';"
+                            style="padding: 14px 48px;">
+                            Mehr erfahren
+                        </button>
+                        <section class="signup-section" id="join">
+                            <!-- Hier mehr Luft nach oben schaffen -->
+                            <div style="height: 80px;"></div>
+                            <h2>Bleib informiert – Sichere dir den Early Access</h2>
+                            <form
+    name="early-access"
+    method="POST"
+    action="/.netlify/functions/subscribe-brevo"
+    netlify-honeypot="bot-field"
+    style="max-width: 480px; margin: 0 auto 40px;"
+>
+    <input type="hidden" name="form-name" value="early-access">
+    <input type="hidden" name="redirect" value="/danke.html"> <!-- ← das ist neu – verhindert 404 -->
+
+    <p hidden>
+        <label>Don’t fill this out: <input name="bot-field" /></label>
+    </p>
+
+    <!-- Mittiges Label -->
+    <label style="display: block; text-align: center; margin-bottom: 8px;">Deine E-Mail-Adresse:</label>
+
+    <!-- Zwei kleine Boxen -->
+    <div style="display: flex; gap: 12px; margin-bottom: 20px;">
+        <div style="flex: 1;">
+            <input
+                type="text"
+                name="vorname"
+                id="vorname"
+                placeholder="Vorname"
+                required
+                style="width: 100%; padding: 16px; border: 0px; border-radius: 50px; background: var(--according-bg); color: var(--text-primary); font-size: 1.1rem; box-shadow: 0 8px 32px rgba(0,0,0,0.2);"
+            >
+        </div>
+        <div style="flex: 1;">
+            <input
+                type="text"
+                name="nachname"
+                id="nachname"
+                placeholder="Nachname (optional)"
+                style="width: 100%; padding: 16px; border: 0px; border-radius: 50px; background: var(--according-bg); color: var(--text-primary); font-size: 1.1rem; box-shadow: 0 8px 32px rgba(0,0,0,0.2);"
+            >
+        </div>
+    </div>
+
+    <!-- E-Mail-Box -->
+    <input
+        type="email"
+        name="email"
+        id="email"
+        placeholder="beispiel@email.com"
+        required
+        style="width: 100%; padding: 16px; margin-bottom: 16px; border: 0px; border-radius: 50px; background: var(--according-bg); color: var(--text-primary); font-size: 1.1rem; box-shadow: 0 8px 32px rgba(0,0,0,0.2);"
+    >
+
+    <div style="margin: 16px 0; display: flex; align-items: center; gap: 12px;">
+        <input type="checkbox" name="newsletter_optin" id="newsletter_optin" value="Ja">
+        <label for="newsletter_optin">
+            Ja, schickt mir Updates & <strong>Early Access</strong> Infos (Newsletter)
+        </label>
+    </div>
+
+    <button type="submit" class="btn primary full">
+        Kostenlos vormerken
+    </button>
+</form>
+
+                            <!-- NUR EIN EINZIGES Meldungs-Element – sauber ohne überflüssige Styles -->
+                            <p id="form-message" style="text-align: center; margin-top: 40px; min-height: 0;"></p>
+                        </section>
+                    </div>
+                </div>
+            </section>
+
+        </main>
+
+        <footer>
+            <p>© 2026 Dateo – Made with ❤️ in Germany</p>
+        </footer>
+    </div>
+</body>
+
+</html>

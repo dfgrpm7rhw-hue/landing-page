@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="de" color-mode="light">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mehr erfahren – Dateo</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+    <script src="script.js"></script>
+
+    <!-- Theme-Sync für alle Seiten -->
+    <script>
+      document.addEventListener('DOMContentLoaded', () => {
+        const html = document.documentElement;
+        const toggle = document.getElementById('theme-toggle-checkbox');
+        if (!toggle) return;
+
+        const saved = localStorage.getItem('color-mode') || 'light';
+        html.setAttribute('color-mode', saved);
+        toggle.checked = (saved === 'dark');
+
+        toggle.addEventListener('change', () => {
+          const mode = toggle.checked ? 'dark' : 'light';
+          html.setAttribute('color-mode', mode);
+          localStorage.setItem('color-mode', mode);
+        });
+      });
+    </script>
+</head>
+<body>
+<div class="bc">
+    <header class="navbar">
+        <div class="logo">Dateo</div>
+        <nav>
+            <a href="index.html">Home</a>
+            <a href="about.html">Über uns</a>
+            <a href="fraq.html">Fragen</a>
+            <a href="index.html#join">Mitmachen</a>
+        </nav>
+          <!-- Theme Toggle mit Icons -->
+<div class="theme-toggle-wrapper">
+    <label class="theme-toggle" aria-label="Dark/Light Mode wechseln">
+        <input type="checkbox" id="theme-toggle-checkbox" />
+        <span class="toggle-track">
+            <span class="toggle-icon sun">☀️</span>
+            <span class="toggle-icon moon">🌙</span>
+            <span class="toggle-knob"></span>
+        </span>
+    </label>
+</div>
+    </header>
+
+    <main style="padding-top: 120px;">
+        <section style="padding: 55px 5%; max-width: 1000px; margin: 0 auto;">
+            <h1 style="font-size: 2.8rem; margin-bottom: 32px; color: --accord-bg; text-align: center;">
+                Mehr erfahren über <span class="highlight">Dateo</span>
+            </h1>
+
+            <div style="display: flex; flex-direction: column; gap: 60px;">
+                <!-- Abschnitt 1 -->
+                <div style="background: var(--according-bg); padding: 40px; border-radius: 24px; box-shadow: 0 8px 32px rgba(0,0,0,0.2);">
+                    <h2 style="color: var(--accent); margin-bottom: 20px;">Wie funktioniert Dateo?</h2>
+                    <p style="font-size: 1.2rem; line-height: 1.8;">
+                        Dateo ist keine klassische Swipe-App. Stattdessen setzen wir auf intelligente Matching-Algorithmen, die auf echten Werten, Interessen und Lebenszielen basieren. 
+                        Du beantwortest tiefgehende Fragen zu Persönlichkeit, Wünschen und Dealbreakers – und bekommst Matches, die wirklich passen könnten.
+                    </p>
+                </div>
+
+                <!-- Abschnitt 2 -->
+                <div style="background: var(--according-bg); padding: 40px; border-radius: 24px; box-shadow: 0 8px 32px rgba(0,0,0,0.2);">
+                    <h2 style="color: var(--accent); margin-bottom: 20px;">Was macht Dateo besonders?</h2>
+                    <ul style="font-size: 1.2rem; line-height: 1.8; padding-left: 24px;">
+                        <li>Kein endloses Swipen, nur qualitativ hochwertige Matches</li>
+                        <li>Starke Profilverifizierung.</li>
+                        <li>Fokus auf echte Gespräche statt reiner Optik</li>
+                        <li>Regionale Priorisierung</li>
+                        <li>Datenschutz auf höchstem Niveau (DSGVO-konform)</li>
+                    </ul>
+                </div>
+
+                <!-- Abschnitt 3 -->
+                <div style="background: var(--according-bg); padding: 40px; border-radius: 24px; box-shadow: 0 8px 32px rgba(0,0,0,0.2);">
+                    <h2 style="color: var(--accent); margin-bottom: 20px;">Was kommt als Nächstes?</h2>
+                    <p style="font-size: 1.2rem; line-height: 1.8;">
+                        Wir arbeiten aktuell mit Hochdruck am Launch. Die Beta-Version wird voraussichtlich Ende des Sommers 2026 starten. 
+                        Als <span class="highlight">Early Access</span> Mitglied bekommst du gratis Guthaben für die ersten Matches.
+                    </p>
+                </div>
+            </div>
+
+            <div style="text-align: center; margin-top: 80px;">
+                <a href="index.html#join" class="btn primary" style="padding: 14px 32px; font-size: 1.1rem;">
+                    Jetzt Early Access sichern
+                </a>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <p>© 2026 Dateo – Made with ❤️ in Germany</p>
+    </footer>
+    </div>
+</body>
+</html>

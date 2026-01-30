@@ -1,0 +1,105 @@
+
+        <!DOCTYPE html>
+<html lang="de" color-mode="light">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dateo - Fragen</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+       <script src="script.js"></script>
+
+    <!-- Theme-Sync für alle Seiten -->
+    <script>
+      document.addEventListener('DOMContentLoaded', () => {
+        const html = document.documentElement;
+        const toggle = document.getElementById('theme-toggle-checkbox');
+        if (!toggle) return;
+
+        const saved = localStorage.getItem('color-mode') || 'light';
+        html.setAttribute('color-mode', saved);
+        toggle.checked = (saved === 'dark');
+
+        toggle.addEventListener('change', () => {
+          const mode = toggle.checked ? 'dark' : 'light';
+          html.setAttribute('color-mode', mode);
+          localStorage.setItem('color-mode', mode);
+        });
+      });
+    </script>
+</head>
+<body>
+<div class="bc">
+    <header class="navbar">
+        <div class="logo">Dateo</div>
+        <nav>
+            <a href="index.html">Home</a>
+            <a href="about.html">Über uns</a>
+            <a href="fraq.html">Fragen</a>
+            <a href="index.html#join">Mitmachen</a>
+        </nav>
+          <!-- Theme Toggle mit Icons -->
+<div class="theme-toggle-wrapper">
+    <label class="theme-toggle" aria-label="Dark/Light Mode wechseln">
+        <input type="checkbox" id="theme-toggle-checkbox" />
+        <span class="toggle-track">
+            <span class="toggle-icon sun">☀️</span>
+            <span class="toggle-icon moon">🌙</span>
+            <span class="toggle-knob"></span>
+        </span>
+    </label>
+</div>
+    </header>
+
+     <section class="faq-section" id="faq">
+            <h2>Häufige Fragen</h2>
+            <div class="accordion">
+                <details>
+                    <summary>Wann startet die Plattform?</summary>
+                    <p>Geplanter Launch: Ende Sommer 2026. Als <strong>Early Access</strong> Mitglied bekommen Sie als Erstes Bescheid.</p>
+                </details>
+                <details>
+                    <summary>Unterschied zu Tinder & Co.?</summary>
+                    <p>Der Fokus liegt stärker auf entspannten Gesprächen und persönlichem Austausch. Kontakte entstehen über Chats, nicht über schnelles Wischen oder reinen Fotovergleich.</p>
+                </details>
+                <details>
+                    <summary>Ist es kostenlos?</summary>
+                    <p>Die Anmeldung ist kostenlos. Zum Chatten nutzen Sie ein Guthaben, sodass Sie völlig flexibel sind und selbst entscheiden können, wann Sie Nachrichten verschicken möchten. Ihr Guthaben bleibt dabei erhalten und verfällt nicht.</p>
+                </details>
+                  <details>
+                    <summary>Wie kann ich hier ganz einfach mit anderen in Kontakt treten?</summary>
+                    <p>Sie können Profile ansehen und direkt eine Nachricht schreiben, ohne lange Umwege.</p>
+                </details>
+                <details>
+                    <summary>Wie starte ich am besten auf der Seite?</summary>
+                    <p>Nach der Anmeldung erstellen Sie Ihr Profil und können sofort nach passenden Kontakten suchen oder Nachrichten senden.</p>
+                </details>
+                <details>
+                    <summary>Wie finde ich Profile, die zu mir passen?</summary>
+                    <p>Über Such- und Filterfunktionen lassen sich Profile nach Interessen oder Vorlieben auswählen.</p>
+                </details>
+                  <details>
+                    <summary>An wen kann ich mich wenden, wenn ich Hilfe brauche?</summary>
+                    <p>Bei Fragen oder Problemen steht ein Support-Team zur Verfügung, das über die Seite erreichbar ist.</p>
+                </details>
+                <details>
+                    <summary>Wie werden meine persönlichen Daten geschützt?</summary>
+                    <p>Ihre persönlichen Daten werden vertraulich behandelt und durch moderne Sicherheitsmaßnahmen geschützt. Sie dienen ausschließlich der Nutzung der Plattform und bleiben stets sicher und geschützt.</p>
+                </details>
+                <details>
+                    <summary>Wie kann ich meine Erfahrung auf der Seite verbessern?</summary>
+                    <p>Sie können Ihr Profil vollständig ausfüllen, Interessen angeben und aktiv mit anderen in Kontakt treten, um passende Verbindungen zu finden.</p>
+                </details>
+                 <details>
+                    <summary>Wofür ist die Plattform besonders gut geeignet?</summary>
+                    <p>Für Menschen, die unkompliziert chatten, neue Kontakte knüpfen und sich in ruhiger Atmosphäre kennenlernen möchten.</p>
+                </details>
+            </div>
+        </section>
+
+    <footer>
+        <p>© 2026 Dateo – Made with ❤️ in Germany</p>
+    </footer>
+    </div>
+</body>
+</html>
