@@ -38,19 +38,22 @@ exports.handler = async function (event) {
       }),
     });
 
-    const data = await response.json();
-
     if (!response.ok) {
+      const error = await response.json();
       return {
         statusCode: response.status,
-        body: JSON.stringify({ error: data.message || 'Brevo Fehler' }),
+        body: JSON.stringify({ error: error.message || 'Fehler beim Hinzufügen' }),
       };
     }
 
+    // ✅ Redirect auf Danke-Seite
     return {
-      statusCode: 200,
-      body: JSON.stringify({ success: true }),
+      statusCode: 302,
+      headers: {
+        Location: '/danke.html',
+      },
     };
+
   } catch (err) {
     return {
       statusCode: 500,
