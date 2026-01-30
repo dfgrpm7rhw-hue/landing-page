@@ -76,39 +76,30 @@
                             <!-- Hier mehr Luft nach oben schaffen -->
                             <div style="height: 80px;"></div>
                             <h2>Bleib informiert – Sichere dir den Early Access</h2>
-                            <form
+                           <form
     name="early-access"
     method="POST"
-    action="/.netlify/functions/subscribe-brevo"
-    netlify-honeypot="bot-field"
+    action="https://d549b2c0.sibforms.com/serve/MUIFAMJSrD0YOkoS1KSvU_mC8bwVakafleTG5eAiPPgecUIRjB3UJMGfsAWpBy4SX4pG7dWOd6hPnXlKxJjMfmQGTf7D_ClSzJVFiP6anOIeLysJaoStwGpoY_SEdGah2F5Fohlto_4A5U9DoyNVAv6JsgV3KX9kihAyfhLCzyYubbixCAc_5KYQ28infktprdrakX2IT2ZvYEryrw=="
     style="max-width: 480px; margin: 0 auto 40px;"
 >
-    <input type="hidden" name="form-name" value="early-access">
-    <input type="hidden" name="redirect" value="/danke.html"> <!-- ← das ist neu – verhindert 404 -->
-
-    <p hidden>
-        <label>Don’t fill this out: <input name="bot-field" /></label>
-    </p>
-
-    <!-- Mittiges Label -->
-    <label style="display: block; text-align: center; margin-bottom: 8px;">Deine E-Mail-Adresse:</label>
 
     <!-- Zwei kleine Boxen -->
     <div style="display: flex; gap: 12px; margin-bottom: 20px;">
         <div style="flex: 1;">
             <input
                 type="text"
-                name="vorname"
+                name="FIRSTNAME"
                 id="vorname"
                 placeholder="Vorname"
                 required
                 style="width: 100%; padding: 16px; border: 0px; border-radius: 50px; background: var(--according-bg); color: var(--text-primary); font-size: 1.1rem; box-shadow: 0 8px 32px rgba(0,0,0,0.2);"
             >
         </div>
+
         <div style="flex: 1;">
             <input
                 type="text"
-                name="nachname"
+                name="LASTNAME"
                 id="nachname"
                 placeholder="Nachname (optional)"
                 style="width: 100%; padding: 16px; border: 0px; border-radius: 50px; background: var(--according-bg); color: var(--text-primary); font-size: 1.1rem; box-shadow: 0 8px 32px rgba(0,0,0,0.2);"
@@ -116,27 +107,35 @@
         </div>
     </div>
 
-    <!-- E-Mail-Box -->
+    <!-- E-Mail -->
     <input
         type="email"
-        name="email"
+        name="EMAIL"
         id="email"
         placeholder="beispiel@email.com"
         required
         style="width: 100%; padding: 16px; margin-bottom: 16px; border: 0px; border-radius: 50px; background: var(--according-bg); color: var(--text-primary); font-size: 1.1rem; box-shadow: 0 8px 32px rgba(0,0,0,0.2);"
     >
 
+    <!-- Newsletter Zustimmung -->
     <div style="margin: 16px 0; display: flex; align-items: center; gap: 12px;">
-        <input type="checkbox" name="newsletter_optin" id="newsletter_optin" value="Ja">
-        <label for="newsletter_optin">
+        <input type="checkbox" required>
+        <label>
             Ja, schickt mir Updates & <strong>Early Access</strong> Infos (Newsletter)
         </label>
     </div>
+
+    <!-- Pflichtfelder für Brevo (unsichtbar) -->
+    <input type="text" name="email_address_check" value="">
+    <input type="hidden" name="locale" value="de">
+    <input type="hidden" name="html_type" value="simple">
 
     <button type="submit" class="btn primary full">
         Kostenlos vormerken
     </button>
 </form>
+
+
 
                             <!-- NUR EIN EINZIGES Meldungs-Element – sauber ohne überflüssige Styles -->
                             <p id="form-message" style="text-align: center; margin-top: 40px; min-height: 0;"></p>
