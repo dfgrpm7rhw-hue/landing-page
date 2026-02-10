@@ -438,7 +438,7 @@ input[type="email"]::placeholder {
         margin-top: 8px;               /* Abstand nach oben */
         display: flex;
         justify-content: center;       /* Links zentriert */
-        gap: 1.2rem;                   /* kleiner Abstand zwischen Links */
+        gap: 0.6rem;                   /* kleiner Abstand zwischen Links */
         flex-wrap: wrap;               /* bei sehr engen Screens umbrechen */
     }
 
@@ -484,7 +484,7 @@ input[type="email"]::placeholder {
         margin: 0 12px;
         font-size: 0.95rem;
     }
-    
+
 }
 
 .about-hero {
