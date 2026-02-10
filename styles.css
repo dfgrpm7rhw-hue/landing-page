@@ -408,6 +408,58 @@ input[type="email"]::placeholder {
 
 /* Responsive */
 @media (max-width: 768px) {
+
+    .navbar {
+        padding: 12px 5% 16px;     /* etwas weniger Padding oben/unten */
+        flex-direction: row;       /* Logo + Toggle nebeneinander, nav darunter */
+        flex-wrap: wrap;           /* erlaubt Umbruch */
+        justify-content: space-between;
+        align-items: center;
+        gap: 8px 12px;
+    }
+
+    /* Logo bleibt links oder zentriert – je nach Wunsch */
+
+
+    /* Theme-Toggle bleibt rechts */
+    .theme-toggle-wrapper {
+        flex: 0 0 auto;
+        order: 2;                  /* nach Logo, vor nav */
+    }
+
+    /* ────────────────────────────────────────────────
+       Nav: Aus absolute rausnehmen → normaler Flex-Flow
+    ───────────────────────────────────────────────── */
+    nav {
+        position: static !important;   /* zwingend nötig! */
+        transform: none !important;
+        order: 3;                      /* ganz nach unten */
+        width: 100%;                   /* volle Breite */
+        margin-top: 8px;               /* Abstand nach oben */
+        display: flex;
+        justify-content: center;       /* Links zentriert */
+        gap: 1.2rem;                   /* kleiner Abstand zwischen Links */
+        flex-wrap: wrap;               /* bei sehr engen Screens umbrechen */
+    }
+
+    nav a {
+        margin: 0 !important;          /* alte Margins killen */
+        font-size: 0.95rem;
+        padding: 6px 10px;             /* etwas mehr Klickfläche */
+        white-space: nowrap;           /* Links brechen nicht mittendrin */
+    }
+
+    /* Falls es immer noch zu eng wird → kleinerer Font oder mehr Wrap */
+    @media (max-width: 480px) {
+        nav {
+            gap: 0.8rem;
+            justify-content: space-evenly;
+        }
+        nav a {
+            font-size: 0.9rem;
+        }
+    }
+}@media (max-width: 768px) {
     h1 {
         font-size: 3.5rem;
     }
@@ -432,10 +484,7 @@ input[type="email"]::placeholder {
         margin: 0 12px;
         font-size: 0.95rem;
     }
-
-    .cta-buttons {
-        flex-direction: column;
-    }
+    
 }
 
 .about-hero {
