@@ -102,11 +102,20 @@ body {
     content: url("Logo-dark.png");
 }
 
+nav {
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    align-items: center;
+    gap: 2.5rem;           /* statt margin-left am <a> → sauberer */
+}
+
 
 nav a {
+    margin-left: 0;        /* ← wichtig! altes margin entfernen */
     color: var(--text-primary);
     text-decoration: none;
-    margin-left: 30px;
     font-weight: 500;
     transition: color 0.3s;
 }
