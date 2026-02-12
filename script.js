@@ -36,6 +36,7 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
+    
     // Initial
     updateActiveLink();
 
@@ -65,3 +66,4 @@ document.addEventListener('DOMContentLoaded', () => {
     // Back/Forward Buttons
     window.addEventListener('popstate', updateActiveLink);
 });
+
